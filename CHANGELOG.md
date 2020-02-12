@@ -5,3 +5,4 @@
 ## 0.0.2
 
 * README.md files updated
+* UIApplication.shared.statusBarOrientation used for determining iOS orientation

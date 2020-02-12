@@ -9,16 +9,16 @@ public class SwiftOrientationProviderPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-  if(call.method.elementsEqual("getOrientation")){
+  if (call.method.elementsEqual("getOrientation")){
     var orientation = ""
-        switch UIDevice.current.orientation{
+        switch UIApplication.shared.statusBarOrientation{
         case .portrait:
             orientation="PortraitUp"
         case .portraitUpsideDown:
             orientation="PortraitDown"
-        case .landscapeLeft:
-            orientation="LandscapeLeft"
         case .landscapeRight:
+            orientation="LandscapeLeft"
+        case .landscapeLeft:
             orientation="LandscapeRight"
         default:
             orientation="Unknown"
