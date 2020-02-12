@@ -16,12 +16,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    initDeviceOrientationState();
-  }
-
-  Future<void> initDeviceOrientationState() async {
-    _deviceOrientation = await OrientationProvider.orientation;
-    setState(() {});
   }
 
   @override
@@ -37,7 +31,7 @@ class _MyAppState extends State<MyApp> {
       return MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-            title: const Text('Plugin example app'),
+            title: const Text('OrientationProviderPlugin example app'),
           ),
           body: Center(
             child: Text('Current device orientation: $_deviceOrientation\n'),

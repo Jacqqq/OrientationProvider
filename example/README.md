@@ -1,16 +1,40 @@
-# orientation_provider_example
+## Sample usage
 
-Demonstrates how to use the orientation_provider plugin.
+import 'dart:async';
 
-## Getting Started
+import 'package:flutter/material.dart';
+import 'package:orientation_provider/orientation_provider.dart';
 
-This project is a starting point for a Flutter application.
+void main() => runApp(MyApp());
 
-A few resources to get you started if this is your first Flutter project:
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+class _MyAppState extends State<MyApp> {
+  ExactDeviceOrientation _deviceOrientation;
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  @override
+  Widget build(BuildContext context) {
+    return OrientationBuilder(builder: (context, orientation) {
+      OrientationProvider.orientation.then((value) {
+        if (_deviceOrientation != value) {
+          setState(() {
+            _deviceOrientation = value;
+          });
+        }
+      });
+      return MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text('OrientationProviderPlugin example app'),
+          ),
+          body: Center(
+            child: Text('Current device orientation: $_deviceOrientation\n'),
+          ),
+        ),
+      );
+    });
+  }
+}
