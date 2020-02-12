@@ -10,7 +10,7 @@ public class SwiftOrientationProviderPlugin: NSObject, FlutterPlugin {
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
   if(call.method.elementsEqual("getOrientation")){
-  var orientation
+    var orientation = ""
         switch UIDevice.current.orientation{
         case .portrait:
             orientation="PortraitUp"
@@ -23,7 +23,7 @@ public class SwiftOrientationProviderPlugin: NSObject, FlutterPlugin {
         default:
             orientation="Unknown"
         }
-      result(text)
+      result(orientation)
     }
   }
 }
